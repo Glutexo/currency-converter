@@ -2,6 +2,16 @@
 (function() {
   var body, html, rate;
 
+  Number.prototype.format = function() {
+    var regexp, s;
+    s = String(this);
+    regexp = new RegExp('(\\d{1})((\\d{3}( |$))+)', 'g');
+    while (s.match(regexp)) {
+      s = s.replace(regexp, '$1 $2');
+    }
+    return s;
+  };
+
   rate = 7.5;
 
   body = document.getElementsByTagName('body')[0];
@@ -14,6 +24,7 @@
     num = p1.replace(regexp, '');
     num = parseInt(num);
     num *= rate;
+    num = num.format();
     return String(num) + ' Kč';
   });
 
