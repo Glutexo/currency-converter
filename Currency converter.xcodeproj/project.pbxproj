@@ -6,11 +6,24 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXFileReference section */
+		53F9A12317DB7097000CDA85 /* convert.coffee */ = {isa = PBXFileReference; lastKnownFileType = text; path = convert.coffee; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		53F9A11C17DB707E000CDA85 = {
 			isa = PBXGroup;
 			children = (
+				53F9A12417DB7237000CDA85 /* currency_converter */,
 			);
+			sourceTree = "<group>";
+		};
+		53F9A12417DB7237000CDA85 /* currency_converter */ = {
+			isa = PBXGroup;
+			children = (
+				53F9A12317DB7097000CDA85 /* convert.coffee */,
+			);
+			name = currency_converter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
