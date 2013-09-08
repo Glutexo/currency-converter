@@ -4,17 +4,22 @@ conversionRate = 7.5 # 1 LTL =~ 7.5 CZK
 # Formatting function for the converted numbers to look nice.
 # Adds spaces between every three numbers.
 Number.prototype.formatNumber = ->
-  s = String this
+  parts = String(this).split('.')
+  natural = parts[0]
+
   regexp = new RegExp '(\\d{1})((\\d{3}( |$))+)', 'g'
-  s = s.replace regexp, '$1 $2' while s.match regexp
-  s
+  natural = natural.replace regexp, '$1 $2' while natural.match regexp
+  if typeof parts[1] != 'undefined'
+    natural + ',' + parts[1]
+  else
+    natural
 
 # Actual money converting function. Searches for a price in LTL and re-
 # places it with a price in CZK.
 String.prototype.convertCurrency = ->
-  this.replace /([\d ]+) Lt/g, (match, p1) ->
-    regexp = new RegExp ' ', 'g'
-    num = p1.replace regexp, ''
+  this.replace /([\d ,\.]+) ?Lt/g, (match, p1) ->
+    num = p1.replace /( )/g, ''
+    num = p1.replace /,/g, '.'
     num = parseInt num
     num *= conversionRate # Actual money conversion.
     num = num.formatNumber()

@@ -5,20 +5,25 @@
   conversionRate = 7.5;
 
   Number.prototype.formatNumber = function() {
-    var regexp, s;
-    s = String(this);
+    var natural, parts, regexp;
+    parts = String(this).split('.');
+    natural = parts[0];
     regexp = new RegExp('(\\d{1})((\\d{3}( |$))+)', 'g');
-    while (s.match(regexp)) {
-      s = s.replace(regexp, '$1 $2');
+    while (natural.match(regexp)) {
+      natural = natural.replace(regexp, '$1 $2');
     }
-    return s;
+    if (typeof parts[1] !== 'undefined') {
+      return natural + ',' + parts[1];
+    } else {
+      return natural;
+    }
   };
 
   String.prototype.convertCurrency = function() {
-    return this.replace(/([\d ]+) Lt/g, function(match, p1) {
-      var num, regexp;
-      regexp = new RegExp(' ', 'g');
-      num = p1.replace(regexp, '');
+    return this.replace(/([\d ,\.]+) ?Lt/g, function(match, p1) {
+      var num;
+      num = p1.replace(/( )/g, '');
+      num = p1.replace(/,/g, '.');
       num = parseInt(num);
       num *= conversionRate;
       num = num.formatNumber();

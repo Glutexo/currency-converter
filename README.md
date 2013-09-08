@@ -7,12 +7,12 @@ The extension is written in CoffeeScript.
 ## **Not** supported features: ##
 
  * Real exchange rate loaded and cached from a bank.
- * Decimal number conversion.
  * LTL instead of just Lt.
  * Prices without a space between the value and the currency.
  * Other currencies than LTL and CZK.
  * Opposite way conversion (CZK to LTL).
  * Converting prices in ALT and TITLE attributes.
+ * Converting prices in dynamically loaded content.
 
  * etc. etc.
 
