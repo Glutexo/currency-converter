@@ -20,10 +20,10 @@
   };
 
   String.prototype.convertCurrency = function() {
-    return this.replace(/([\d ,\.]+) ?Lt/g, function(match, p1) {
+    return this.replace(/([\d][\d ,\.]*) ?Lt/g, function(match, p1) {
       var num;
       num = p1.replace(/( )/g, '');
-      num = p1.replace(/,/g, '.');
+      num = num.replace(/,/g, '.');
       num = parseInt(num);
       num *= conversionRate;
       num = num.formatNumber();

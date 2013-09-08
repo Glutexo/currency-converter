@@ -17,9 +17,9 @@ Number.prototype.formatNumber = ->
 # Actual money converting function. Searches for a price in LTL and re-
 # places it with a price in CZK.
 String.prototype.convertCurrency = ->
-  this.replace /([\d ,\.]+) ?Lt/g, (match, p1) ->
+  this.replace /([\d][\d ,\.]*) ?Lt/g, (match, p1) ->
     num = p1.replace /( )/g, ''
-    num = p1.replace /,/g, '.'
+    num = num.replace /,/g, '.'
     num = parseInt num
     num *= conversionRate # Actual money conversion.
     num = num.formatNumber()
