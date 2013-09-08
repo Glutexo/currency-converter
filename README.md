@@ -2,6 +2,8 @@
 
 This simple extension converts price information on visited websites. It searches the document for a price in Lt (Lithuanian Litas, LTL) and converts the price to Kč (Czech Crowns, CZK). A hard-coded exchange rate 7.5 Kč for 1 Lt is used.
 
+The extension is written in CoffeeScript.
+
 ## **Not** supported features: ##
 
  * Real exchange rate loaded and cached from a bank.
